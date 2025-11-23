@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" href="style/styles.css">
+</head>
+<body>
+    <div class="page">
+        <!-- Переключатель темы (ЗАДАЧА 4) -->
+        <div class="theme-toggle">
+            <button class="theme-toggle__button" onclick="toggleTheme()">🌓</button>
+        </div>
+
+        <header class="header"> 
+            <h1 class="header__title">Главная</h1> 
+        </header>
+
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link nav__link--active" href="index.html">Главная</a></li>
+                <li class="nav__item"><a class="nav__link" href="pages/news.html">Новости</a></li>
+                <li class="nav__item"><a class="nav__link" href="pages/practices.html">Практики</a></li> 
+                <li class="nav__item"><a class="nav__link" href="pages/goods.html">Товары</a></li>
+                <li class="nav__item"><a class="nav__link" href="pages/contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <article class="profile">
+                <h1 class="profile__title">Информация об авторе</h1>
+                <img class="profile__photo" src="images/photo.jpg" alt="Фото автора">
+                <h2 class="profile__name">Нижегородов Данил</h2>
+                <p class="profile__group">ЭФБО 12-24</p>
+            </article>
+            
+            <section class="about">
+                <h2 class="about__title">Обо мне</h2>
+                <p class="about__text">Я родился в Москве 2006. Первая задокументированная игра в доту была в 5 месяцев, меня снесли за 20. Этот луз заложил фундамент для развития моей личности. Люблю американские комедии сомнительного качества нулевых</p>
+            </section>
+            
+            <section class="skills">
+                <h2 class="skills__title">Мои навыки</h2>
+                <div class="skills__grid">
+                    <span class="skill">Профиссиональный пудж</span>
+                    <span class="skill">Умею готовить лагман</span>
+                    <span class="skill">Имею одаренность к спортивной аналитике</span>
+                    <span class="skill">9500 кубков Clash Royale</span>
+                </div>
+            </section>
+            
+            <section class="experience">
+                <h2 class="experience__title">Мой опыт работы</h2>
+                <div class="experience__grid">
+                    <article class="experience-card">
+                        <h3 class="experience-card__title">Опыт работы у станка</h3>
+                        <p class="experience-card__desc">Работал в 13 лет на складе бьютиблогерши чтобы купить пк</p>
+                    </article>
+                    <article class="experience-card">
+                        <h3 class="experience-card__title">Кальянщик</h3>
+                        <p class="experience-card__desc">Работал кальянщиком у армянской мафии</p>
+                    </article>
+                    <article class="experience-card">
+                        <h3 class="experience-card__title">Строитель</h3>
+                        <p class="experience-card__desc">Работал строителем. Отреставрировал аэропорт чтобы люди летали. Не благодарите.</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>ООО "тмыв денег" © 2025</p>
+        </footer>    
+    </div>
+
+    <script>
+        // Функция переключения темы (ЗАДАЧА 4)
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            
+            // Сохраняем выбор пользователя
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Восстанавливаем тему при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        });
+    </script>
+</body>
+</html>

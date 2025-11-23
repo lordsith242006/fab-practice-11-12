@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Практики</title>
+        <link rel="stylesheet" href="../style/styles.css">
+    </head>
+    <body>
+        <div class="page">
+            <!-- Переключатель темы -->
+            <div class="theme-toggle">
+                <button class="theme-toggle__button" onclick="toggleTheme()">🌓</button>
+            </div>
+
+            <header class="header">
+                <h1 class="header__title">Практики</h1>
+            </header>
+            
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+                    <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
+                    <li class="nav__item"><a class="nav__link nav__link--active" href="practices.html">Практики</a></li> 
+                    <li class="nav__item"><a class="nav__link" href="goods.html">Товары</a></li>
+                    <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <main class="content">
+                <section class="news">
+                    <h2 class="section-title">Наши практики</h2>
+                    
+                    <article class="news-card">
+                        <h2 class="news-card__title">Понижение порядочности аккаунтов в Dota 2</h2>
+                        <p class="news-card__meta">2023-2024 гг.</p>
+                        <p class="news-card__text">Профессионально занимался понижением порядочности аккаунтов в Dota 2. Снижал поряду для клиентов до требуемого уровня, получил опыт работы с международными заказчиками.</p>
+                    </article>
+                    
+                    <article class="news-card">
+                        <h2 class="news-card__title">Торговля арбузами</h2>
+                        <p class="news-card__meta">2007-∞.</p>
+                        <p class="news-card__text">Отдаю добрых арбузы за даром. В хорошие руки.</p>
+                    </article>
+                    
+                    <article class="news-card">
+                        <h2 class="news-card__title">Спонсорство Team Spirit</h2>
+                        <p class="news-card__meta">988-2025 гг</p>
+                        <p class="news-card__text">Спонсировал команду чтобы они отыгрывали на совесть, однако у команды щас тяжкий период но так как я человек широкой души продолжаю кидать копеечку.</p>
+                    </article>
+                </section>
+            </main>
+
+            <footer class="footer">
+                <p>ООО "тмыв денег" © 2025</p>
+            </footer>    
+        </div>
+
+        <script>
+            function toggleTheme() {
+                const html = document.documentElement;
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            });
+        </script>
+    </body>
+</html>

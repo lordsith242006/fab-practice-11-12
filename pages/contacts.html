@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Контакты</title>
+        <link rel="stylesheet" href="../style/styles.css">
+        <style>
+            .modal::backdrop {
+                background: rgba(0, 0, 0, 0.6);
+                animation: fadeIn 0.3s ease;
+            }
+
+            .modal {
+                border: none;
+                border-radius: var(--border-radius-lg);
+                padding: 0;
+                box-shadow: var(--shadow-lg);
+                animation: slideIn 0.3s ease;
+                max-width: 500px;
+                width: 90vw;
+                max-height: 90vh;
+                overflow-y: auto;
+                background: var(--color-surface);
+                border: 1px solid var(--color-border);
+            }
+
+            .modal__header {
+                background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+                color: var(--color-surface);
+                padding: var(--spacing-lg);
+                border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+                margin: 0;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .modal__header h2 {
+                margin: 0;
+                color: var(--color-surface);
+                font-size: var(--font-size-xl);
+                font-weight: 700;
+            }
+
+            .modal__content {
+                padding: var(--spacing-lg);
+            }
+
+            .form__group {
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .form__label {
+                display: block;
+                margin-bottom: var(--spacing-sm);
+                font-weight: 600;
+                color: var(--color-text);
+                font-size: var(--font-size-base);
+            }
+
+            .form__input,
+            .form__select,
+            .form__textarea {
+                width: 100%;
+                padding: var(--spacing-md);
+                border: 2px solid var(--color-border);
+                border-radius: var(--border-radius-md);
+                font-size: var(--font-size-base);
+                transition: all var(--transition-base);
+                box-sizing: border-box;
+                background: var(--color-surface);
+                color: var(--color-text);
+            }
+
+            .form__input:focus,
+            .form__select:focus,
+            .form__textarea:focus {
+                outline: none;
+                border-color: var(--color-secondary);
+                background: var(--color-background);
+            }
+
+            .form__input::placeholder,
+            .form__textarea::placeholder {
+                color: var(--color-text-light);
+            }
+
+            .form__textarea {
+                min-height: 100px;
+                resize: vertical;
+            }
+
+            .modal__actions {
+                display: flex;
+                gap: var(--spacing-md);
+                justify-content: flex-end;
+                margin-top: var(--spacing-xl);
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                padding: var(--spacing-md) var(--spacing-lg);
+                border: none;
+                border-radius: var(--border-radius-md);
+                cursor: pointer;
+                font-size: var(--font-size-base);
+                transition: all var(--transition-base);
+                font-weight: 600;
+                flex: 1;
+                min-width: 120px;
+            }
+
+            .btn--primary {
+                background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+                color: var(--color-surface);
+                border: 1px solid var(--color-border);
+            }
+
+            .btn--primary:hover {
+                background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-md);
+            }
+
+            .btn--secondary {
+                background: var(--color-surface);
+                color: var(--color-text);
+                border: 2px solid var(--color-border);
+            }
+
+            .btn--secondary:hover {
+                background: var(--color-background);
+                color: var(--color-secondary);
+                border-color: var(--color-secondary);
+            }
+
+            .required {
+                color: var(--color-accent);
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+
+            @keyframes slideIn {
+                from { 
+                    opacity: 0;
+                    transform: translateY(-50px) scale(0.9);
+                }
+                to { 
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+
+            @media (max-width: 600px) {
+                .modal {
+                    margin: var(--spacing-md);
+                    width: calc(100vw - 2rem);
+                }
+                
+                .modal__actions {
+                    flex-direction: column;
+                }
+                
+                .btn {
+                    width: 100%;
+                }
+                
+                .modal__content {
+                    padding: var(--spacing-md);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page">
+            <!-- Переключатель темы -->
+            <div class="theme-toggle">
+                <button class="theme-toggle__button" onclick="toggleTheme()">🌓</button>
+            </div>
+
+            <header class="header">
+                <h1 class="header__title">Контакты</h1>
+            </header>
+
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+                    <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
+                    <li class="nav__item"><a class="nav__link" href="practices.html">Практики</a></li> 
+                    <li class="nav__item"><a class="nav__link" href="goods.html">Товары</a></li>
+                    <li class="nav__item"><a class="nav__link nav__link--active" href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <main class="content">
+                <section class="contacts">
+                    <h2 class="contacts__title">Наши контакты</h2>
+                    
+                    <!-- УБРАЛ КЛАСС contact-info--important с первой карточки -->
+                    <article class="contact-info">
+                        <h3 class="contact-info__title">Электронная почта</h3>
+                        <p class="contact-info__text">Адрес электронной почты: lalala@gorgle.ru</p>
+                    </article>
+                    
+                    <article class="contact-info">
+                        <h3 class="contact-info__title">Физический адрес</h3>
+                        <p class="contact-info__text">Адрес: Большой Саввинский пер., 12, стр. 10Г, Москва</p>
+                    </article>
+
+                    <article class="contact-info">
+                        <h3 class="contact-info__title">Телефон</h3>
+                        <p class="contact-info__text">+7 (495) 777-44-74</p>
+                    </article>
+
+                    <article class="contact-info">
+                        <h3 class="contact-info__title">Время работы</h3>
+                        <p class="contact-info__text">Пн-Пт: 9:00-18:00<br>Сб-Вс: выходной</p>
+                    </article>
+
+                    <article class="contact-info">
+                        <h3 class="contact-info__title">Социальные сети</h3>
+                        <p class="contact-info__text">ICQ: AWP_GUCCI<br>Telegram: @psych0somatics</p>
+                    </article>
+
+                    <button class="contact-info__button" onclick="contactModal.showModal()">Связаться с нами</button>
+                </section>
+            </main>
+
+            <footer class="footer">
+                <p>ООО "тмыв денег" © 2025</p>
+            </footer>
+
+            <!-- Модальное окно обратной связи -->
+            <dialog id="contactModal" class="modal">
+                <div class="modal__header">
+                    <h2>Форма обратной связи</h2>
+                </div>
+                
+                <div class="modal__content">
+                    <form id="feedbackForm" class="form" method="dialog">
+                        <div class="form__group">
+                            <label for="name" class="form__label">Имя <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" class="form__input" required placeholder="Введите ваше имя">
+                        </div>
+
+                        <div class="form__group">
+                            <label for="phone" class="form__label">Телефон <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" class="form__input" required placeholder="+7 (XXX) XXX-XX-XX">
+                        </div>
+
+                        <div class="form__group">
+                            <label for="email" class="form__label">Электронная почта <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" class="form__input" required placeholder="example@mail.ru">
+                        </div>
+
+                        <div class="form__group">
+                            <label for="category" class="form__label">Категория обращения <span class="required">*</span></label>
+                            <select id="category" name="category" class="form__select" required>
+                                <option value="">Выберите категорию</option>
+                                <option value="technical">Техническая поддержка</option>
+                                <option value="commercial">Коммерческое предложение</option>
+                                <option value="cooperation">Сотрудничество</option>
+                                <option value="complaint">Жалоба</option>
+                                <option value="suggestion">Предложение</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </div>
+
+                        <div class="form__group">
+                            <label for="message" class="form__label">Текст обращения <span class="required">*</span></label>
+                            <textarea id="message" name="message" class="form__textarea" required placeholder="Опишите вашу проблему или вопрос..."></textarea>
+                        </div>
+
+                        <div class="modal__actions">
+                            <button type="button" class="btn btn--secondary" onclick="contactModal.close()">Отмена</button>
+                            <button type="button" class="btn btn--primary" onclick="submitForm()">Отправить</button>
+                        </div>
+                    </form>
+                </div>
+            </dialog>
+
+            <script>
+                function toggleTheme() {
+                    const html = document.documentElement;
+                    const currentTheme = html.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    html.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                }
+
+                function submitForm() {
+                    const form = document.getElementById('feedbackForm');
+                    const formData = new FormData(form);
+                    
+                    if (!form.checkValidity()) {
+                        form.reportValidity();
+                        return;
+                    }
+
+                    const data = {
+                        name: formData.get('name'),
+                        phone: formData.get('phone'),
+                        email: formData.get('email'),
+                        category: formData.get('category'),
+                        message: formData.get('message')
+                    };
+
+                    console.log('Данные формы:', data);
+                    
+                    alert('Спасибо! Ваше обращение отправлено. Мы свяжемся с вами в ближайшее время.');
+                    contactModal.close();
+                    form.reset();
+                }
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    const savedTheme = localStorage.getItem('theme') || 'light';
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+
+                    document.getElementById('contactModal').addEventListener('click', function(event) {
+                        if (event.target === this) {
+                            this.close();
+                        }
+                    });
+
+                    document.getElementById('feedbackForm').addEventListener('keypress', function(event) {
+                        if (event.key === 'Enter' && event.target.type !== 'textarea') {
+                            event.preventDefault();
+                        }
+                    });
+                });
+            </script>
+        </div>
+    </body>
+</html>
