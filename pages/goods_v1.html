@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Товары</title>
+        <link rel="stylesheet" href="../style/styles.css">
+    </head>
+    <body>
+        <div class="page">
+            <!-- Переключатель темы -->
+            <div class="theme-toggle">
+                <button class="theme-toggle__button" onclick="toggleTheme()">🌓</button>
+            </div>
+
+            <header class="header">
+                <h1 class="header__title">Наши товары и услуги</h1>
+            </header>
+
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+                    <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
+                    <li class="nav__item"><a class="nav__link" href="practices.html">Практики</a></li> 
+                    <li class="nav__item"><a class="nav__link nav__link--active" href="goods.html">Товары</a></li>
+                    <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <main class="content">
+                <section class="products">
+                    <h2 class="products__title">Каталог</h2>
+                    <p class="products__description">почти все продаем</p>
+                    
+                    <div class="products__grid">
+                        <article class="product-card" onclick="toggleCard(this)">
+                            <div class="product-card__image-container">
+                                <img class="product-card__image" src="../images/beton.jpg" alt="Залить бетон">
+                            </div>
+                            <div class="product-card__info">
+                                <h3 class="product-card__name">Залить бетон</h3>
+                                <p class="product-card__description">Приеду норм залью</p>
+                                <p class="product-card__price">5000₽/м³</p>
+                                <button class="product-card__button">В корзину</button>
+                            </div>
+                        </article>
+                        
+                        <article class="product-card product-card--discount" onclick="toggleCard(this)">
+                            <div class="product-card__image-container">
+                                <img class="product-card__image" src="../images/tachila.jpg" alt="Mazda 626, 1993">
+                            </div>
+                            <div class="product-card__info">
+                                <h3 class="product-card__name">Mazda 626, 1993</h3>
+                                <p class="product-card__description">У вас есть шанс стать владельцем настоящего японского классика! Mazda 626 GE 1993 года— это идеальный баланс между ретро-харизмой и проверенной временной надежностью.</p>
+                                <p class="product-card__price">100 000 ₽</p>
+                                <button class="product-card__button">В корзину</button>
+                            </div>
+                        </article>
+                        
+                        <article class="product-card" onclick="toggleCard(this)">
+                            <div class="product-card__image-container">
+                                <img class="product-card__image" src="../images/Самодельная установка для фейерверков.jpg" alt="Самодельная установка для фейерверков">
+                            </div>
+                            <div class="product-card__info">
+                                <h3 class="product-card__name">Самодельная установка для Фейерверка</h3>
+                                <p class="product-card__description">доставка веселья вам и вашим друзьям</p>
+                                <p class="product-card__price">1 000 000 ₽</p>
+                                <button class="product-card__button">В корзину</button>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="footer">
+                <p>ООО "тмыв денег" © 2025</p>
+            </footer>    
+        </div>
+
+        <script>
+            function toggleTheme() {
+                const html = document.documentElement;
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+
+            function toggleCard(card) {
+                card.classList.toggle('product-card--selected');
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            });
+        </script>
+    </body>
+</html>

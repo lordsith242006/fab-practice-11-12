@@ -1,99 +1,170 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Товары</title>
-        <link rel="stylesheet" href="../style/styles.css">
-    </head>
-    <body>
-        <div class="page">
-            <!-- Переключатель темы -->
-            <div class="theme-toggle">
-                <button class="theme-toggle__button" onclick="toggleTheme()">🌓</button>
-            </div>
-
-            <header class="header">
-                <h1 class="header__title">Наши товары и услуги</h1>
-            </header>
-
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
-                    <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
-                    <li class="nav__item"><a class="nav__link" href="practices.html">Практики</a></li> 
-                    <li class="nav__item"><a class="nav__link nav__link--active" href="goods.html">Товары</a></li>
-                    <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
-                </ul>
-            </nav>
-
-            <main class="content">
-                <section class="products">
-                    <h2 class="products__title">Каталог</h2>
-                    <p class="products__description">почти все продаем</p>
-                    
-                    <div class="products__grid">
-                        <article class="product-card" onclick="toggleCard(this)">
-                            <div class="product-card__image-container">
-                                <img class="product-card__image" src="../images/beton.jpg" alt="Залить бетон">
-                            </div>
-                            <div class="product-card__info">
-                                <h3 class="product-card__name">Залить бетон</h3>
-                                <p class="product-card__description">Приеду норм залью</p>
-                                <p class="product-card__price">5000₽/м³</p>
-                                <button class="product-card__button">В корзину</button>
-                            </div>
-                        </article>
-                        
-                        <article class="product-card product-card--discount" onclick="toggleCard(this)">
-                            <div class="product-card__image-container">
-                                <img class="product-card__image" src="../images/tachila.jpg" alt="Mazda 626, 1993">
-                            </div>
-                            <div class="product-card__info">
-                                <h3 class="product-card__name">Mazda 626, 1993</h3>
-                                <p class="product-card__description">У вас есть шанс стать владельцем настоящего японского классика! Mazda 626 GE 1993 года— это идеальный баланс между ретро-харизмой и проверенной временной надежностью.</p>
-                                <p class="product-card__price">100 000 ₽</p>
-                                <button class="product-card__button">В корзину</button>
-                            </div>
-                        </article>
-                        
-                        <article class="product-card" onclick="toggleCard(this)">
-                            <div class="product-card__image-container">
-                                <img class="product-card__image" src="../images/Самодельная установка для фейерверков.jpg" alt="Самодельная установка для фейерверков">
-                            </div>
-                            <div class="product-card__info">
-                                <h3 class="product-card__name">Самодельная установка для Фейерверка</h3>
-                                <p class="product-card__description">доставка веселья вам и вашим друзьям</p>
-                                <p class="product-card__price">1 000 000 ₽</p>
-                                <button class="product-card__button">В корзину</button>
-                            </div>
-                        </article>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товары</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .product-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card {
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container-fluid p-0">
+        <!-- Header -->
+        <header class="bg-primary text-white py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="h3 mb-1">Наши товары и услуги</h1>
+                        <p class="mb-0 opacity-75">ООО "тмыв денег"</p>
                     </div>
-                </section>
-            </main>
+                    <div class="col-auto">
+                        <span class="badge bg-light text-primary">Каталог</span>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-            <footer class="footer">
-                <p>ООО "тмыв денег" © 2025</p>
-            </footer>    
-        </div>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">
+                                <i class="bi bi-house me-1"></i>Главная
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="news.html">
+                                <i class="bi bi-newspaper me-1"></i>Новости
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="practices.html">
+                                <i class="bi bi-code-slash me-1"></i>Практики
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="goods.html">
+                                <i class="bi bi-cart me-1"></i>Товары
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacts.html">
+                                <i class="bi bi-telephone me-1"></i>Контакты
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-        <script>
-            function toggleTheme() {
-                const html = document.documentElement;
-                const currentTheme = html.getAttribute('data-theme');
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                html.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-            }
+        <!-- Main Content -->
+        <main class="container my-4">
+            <!-- Products Section -->
+            <section class="mb-5">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h3 class="card-title h5 mb-0">
+                            <i class="bi bi-grid-3x3-gap text-primary"></i>
+                            Каталог товаров
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted text-center mb-4">почти все продаем</p>
+                        
+                        <div class="row g-4">
+                            <!-- Product 1 -->
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <img src="../images/beton.jpg" class="card-img-top product-img" alt="Залить бетон">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title">Залить бетон</h5>
+                                        <p class="card-text flex-grow-1">Приеду норм залью</p>
+                                        <div class="mt-auto">
+                                            <p class="h5 text-primary mb-2">5000₽/м³</p>
+                                            <button class="btn btn-primary w-100">
+                                                <i class="bi bi-cart-plus me-1"></i>В корзину
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-            function toggleCard(card) {
-                card.classList.toggle('product-card--selected');
-            }
+                            <!-- Product 2 -->
+                            <div class="col-md-4">
+                                <div class="card h-100 border-warning">
+                                    <span class="position-absolute top-0 end-0 badge bg-danger m-2">СКИДКА</span>
+                                    <img src="../images/tachila.jpg" class="card-img-top product-img" alt="Mazda 626, 1993">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title">Mazda 626, 1993</h5>
+                                        <p class="card-text flex-grow-1">
+                                            У вас есть шанс стать владельцем настоящего японского классика! 
+                                            Mazda 626 GE 1993 года— это идеальный баланс между ретро-харизмой и проверенной временем надежностью.
+                                        </p>
+                                        <div class="mt-auto">
+                                            <p class="h5 text-primary mb-2">100 000 ₽</p>
+                                            <button class="btn btn-primary w-100">
+                                                <i class="bi bi-cart-plus me-1"></i>В корзину
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-            document.addEventListener('DOMContentLoaded', function() {
-                const savedTheme = localStorage.getItem('theme') || 'light';
-                document.documentElement.setAttribute('data-theme', savedTheme);
-            });
-        </script>
-    </body>
+                            <!-- Product 3 -->
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <img src="../images/Самодельная установка для фейерверков.jpg" class="card-img-top product-img" alt="Самодельная установка для фейерверков">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title">Самодельная установка для Фейерверка</h5>
+                                        <p class="card-text flex-grow-1">доставка веселья вам и вашим друзьям</p>
+                                        <div class="mt-auto">
+                                            <p class="h5 text-primary mb-2">1 000 000 ₽</p>
+                                            <button class="btn btn-primary w-100">
+                                                <i class="bi bi-cart-plus me-1"></i>В корзину
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="mb-0">ООО "тмыв денег" © 2025</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <a href="contacts.html" class="text-white text-decoration-none me-3">Контакты</a>
+                        <a href="#" class="text-white text-decoration-none">Политика конфиденциальности</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
